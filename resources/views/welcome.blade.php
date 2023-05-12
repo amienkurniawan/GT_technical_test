@@ -9,18 +9,17 @@
     <meta name="generator" content="Hugo 0.104.2">
     <title>Dashboard Template · Bootstrap v5.2</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
 
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> --}}
 
 </head>
 
 <body>
 
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    {{-- <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
@@ -34,7 +33,7 @@
                 <a class="nav-link px-3" href="#">Sign out</a>
             </div>
         </div>
-    </header>
+    </header> --}}
 
     <div class="container-fluid">
         <div class="row">
@@ -131,132 +130,59 @@
                     </div>
                 </div>
 
-                <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
-                <h2>Section title</h2>
+                <h2>Table Penilaian</h2>
                 <div class="table-responsive">
-                    <table class="table table-striped table-sm">
+                    <table class="table table-striped table-sm table-bordered">
+
+
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Header</th>
-                                <th scope="col">Header</th>
-                                <th scope="col">Header</th>
-                                <th scope="col">Header</th>
+                                <th scope="col" rowspan="2">Nama</th>
+                                <th scope="col" rowspan="2">Email</th>
+                                <th scope="col" colspan="4">Nilai</th>
+                                <th scope="col" rowspan="2">Action</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">X</th>
+                                <th scope="col">Y</th>
+                                <th scope="col">Z</th>
+                                <th scope="col">W</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1,001</td>
-                                <td>random</td>
-                                <td>data</td>
-                                <td>placeholder</td>
-                                <td>text</td>
+                                <td class="col">Java</td>
+                                <td class="col">amien@gmail.com</td>
+                                <td class="col">10</td>
+                                <td class="col">12</td>
+                                <td class="col">14</td>
+                                <td class="col">16</td>
+                                <td class="col">
+                                    <button type="button" class="btn btn-sm btn-primary"
+                                        data-tippy-content="Lihat Laporan"><i
+                                            class="bi bi-file-earmark-check-fill"></i></button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-tippy-content="Edit"><i
+                                            class="bi bi-pencil-square"></i></button>
+                                    <button type="button" class="btn btn-sm btn-warning" data-tippy-content="Hapus"><i
+                                            class="bi bi-trash"></i></button>
+                                </td>
                             </tr>
                             <tr>
-                                <td>1,002</td>
-                                <td>placeholder</td>
-                                <td>irrelevant</td>
-                                <td>visual</td>
-                                <td>layout</td>
-                            </tr>
-                            <tr>
-                                <td>1,003</td>
-                                <td>data</td>
-                                <td>rich</td>
-                                <td>dashboard</td>
-                                <td>tabular</td>
-                            </tr>
-                            <tr>
-                                <td>1,003</td>
-                                <td>information</td>
-                                <td>placeholder</td>
-                                <td>illustrative</td>
-                                <td>data</td>
-                            </tr>
-                            <tr>
-                                <td>1,004</td>
-                                <td>text</td>
-                                <td>random</td>
-                                <td>layout</td>
-                                <td>dashboard</td>
-                            </tr>
-                            <tr>
-                                <td>1,005</td>
-                                <td>dashboard</td>
-                                <td>irrelevant</td>
-                                <td>text</td>
-                                <td>placeholder</td>
-                            </tr>
-                            <tr>
-                                <td>1,006</td>
-                                <td>dashboard</td>
-                                <td>illustrative</td>
-                                <td>rich</td>
-                                <td>data</td>
-                            </tr>
-                            <tr>
-                                <td>1,007</td>
-                                <td>placeholder</td>
-                                <td>tabular</td>
-                                <td>information</td>
-                                <td>irrelevant</td>
-                            </tr>
-                            <tr>
-                                <td>1,008</td>
-                                <td>random</td>
-                                <td>data</td>
-                                <td>placeholder</td>
-                                <td>text</td>
-                            </tr>
-                            <tr>
-                                <td>1,009</td>
-                                <td>placeholder</td>
-                                <td>irrelevant</td>
-                                <td>visual</td>
-                                <td>layout</td>
-                            </tr>
-                            <tr>
-                                <td>1,010</td>
-                                <td>data</td>
-                                <td>rich</td>
-                                <td>dashboard</td>
-                                <td>tabular</td>
-                            </tr>
-                            <tr>
-                                <td>1,011</td>
-                                <td>information</td>
-                                <td>placeholder</td>
-                                <td>illustrative</td>
-                                <td>data</td>
-                            </tr>
-                            <tr>
-                                <td>1,012</td>
-                                <td>text</td>
-                                <td>placeholder</td>
-                                <td>layout</td>
-                                <td>dashboard</td>
-                            </tr>
-                            <tr>
-                                <td>1,013</td>
-                                <td>dashboard</td>
-                                <td>irrelevant</td>
-                                <td>text</td>
-                                <td>visual</td>
-                            </tr>
-                            <tr>
-                                <td>1,014</td>
-                                <td>dashboard</td>
-                                <td>illustrative</td>
-                                <td>rich</td>
-                                <td>data</td>
-                            </tr>
-                            <tr>
-                                <td>1,015</td>
-                                <td>random</td>
-                                <td>tabular</td>
-                                <td>information</td>
-                                <td>text</td>
+                                <td class="col">Java</td>
+                                <td class="col">amien@gmail.com</td>
+                                <td class="col">10</td>
+                                <td class="col">12</td>
+                                <td class="col">14</td>
+                                <td class="col">16</td>
+                                <td class="col">
+                                    <button type="button" class="btn btn-sm btn-primary"
+                                        data-tippy-content="Lihat Laporan"><i
+                                            class="bi bi-file-earmark-check-fill"></i></button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-tippy-content="Edit"><i
+                                            class="bi bi-pencil-square"></i></button>
+                                    <button type="button" class="btn btn-sm btn-warning" data-tippy-content="Hapus"><i
+                                            class="bi bi-trash"></i></button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -265,7 +191,15 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/app.min.js') }}" defer></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> --}}
+
+
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </body>
 
 

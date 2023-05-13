@@ -100,14 +100,10 @@
       <div class="card-header pb-0">
         <div class="row">
           <div class="col-lg-6 col-7">
-            <h6>Projects</h6>
-            <p class="text-sm mb-0">
-              <i class="fa fa-check text-info" aria-hidden="true"></i>
-              <span class="font-weight-bold ms-1">30 done</span> this month
-            </p>
+            <h6>Data Laporan Nilai</h6>
           </div>
           <div class="col-lg-6 col-5 my-auto text-end">
-            <a class="btn btn-outline-primary btn-sm mb-0 me-7">Tambah</a>
+            <a class="btn btn-outline-primary btn-sm mb-0 ">Tambah</a>
           </div>
         </div>
       </div>
@@ -164,7 +160,7 @@
                 <td class="align-middle text-center">
                   22
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle text-end">
                   <a class="btn btn-outline-info btn-sm mb-0 me-3">Lihat Laporan</i></a>
                   <a class="btn btn-outline-info btn-sm mb-0 me-3">Edit</a>
                   <a class="btn btn-outline-danger btn-sm mb-0 me-3">Hapus</a>
@@ -196,7 +192,7 @@
                 <td class="align-middle text-center">
                   22
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle text-end">
                   <a class="btn btn-outline-info btn-sm mb-0 me-3">Lihat Laporan</i></a>
                   <a class="btn btn-outline-info btn-sm mb-0 me-3">Edit</a>
                   <a class="btn btn-outline-danger btn-sm mb-0 me-3">Hapus</a>
@@ -228,7 +224,7 @@
                 <td class="align-middle text-center">
                   22
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle text-end">
                   <a class="btn btn-outline-info btn-sm mb-0 me-3">Lihat Laporan</i></a>
                   <a class="btn btn-outline-info btn-sm mb-0 me-3">Edit</a>
                   <a class="btn btn-outline-danger btn-sm mb-0 me-3">Hapus</a>
@@ -260,7 +256,7 @@
                 <td class="align-middle text-center">
                   22
                 </td>
-                <td class="align-middle text-center">
+                <td class="align-middle text-end">
                   <a class="btn btn-outline-info btn-sm mb-0 me-3">Lihat Laporan</i></a>
                   <a class="btn btn-outline-info btn-sm mb-0 me-3">Edit</a>
                   <a class="btn btn-outline-danger btn-sm mb-0 me-3">Hapus</a>

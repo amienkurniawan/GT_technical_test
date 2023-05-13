@@ -7,7 +7,7 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/sass/app.scss',
-                'resources/js/app.js',
+                'resources/js/app.js'
             ],
             refresh: true,
         }),
@@ -16,11 +16,5 @@ export default defineConfig({
         alias: {
             '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
         }
-    },
-    build: {
-        manifest: true,
-        rollupOptions: {
-            external: ['bootstrap-icons/font/bootstrap-icons.css'],
-        },
     },
 });

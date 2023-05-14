@@ -23,7 +23,7 @@ class PesertaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.form-create-peserta');
     }
 
     /**

@@ -100,81 +100,73 @@
       <div class="card-header pb-0">
         <div class="row">
           <div class="col-lg-6 col-7">
-            <h6>Data Laporan Nilai</h6>
+            <h6>Buat Data Peserta</h6>
           </div>
           <div class="col-lg-6 col-5 my-auto text-end">
-            <a href="{{route('peserta.create')}}" class="btn btn-outline-primary btn-sm mb-0 ">Tambah</a>
           </div>
         </div>
       </div>
-      <div class="card-body px-0 pb-2">
-        <div class="table-responsive">
-          <table class="table align-items-center mb-0">
-            <thead>
-              <tr>
-                <th rowspan="2" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
-                  Nama</th>
-                <th rowspan="2" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                  Email</th>
-                <th colspan="4" class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                  Nilai
-                </th>
-                <th rowspan="2" class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                  Action</th>
-              </tr>
-              <tr>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
-                  X</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
-                  Y</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
-                  Z</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
-                  W</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($data as $item)
-              <tr>
-                <td class="align-middle">
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="{{$item->peserta->photo}}" class="avatar avatar-sm me-3" alt="user2">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">{{$item->peserta->nama}}</h6>
-                    </div>
-                  </div>
-                </td>
-                <td class="align-middle">
-                  {{$item->peserta->email}}
-                </td>
-                <td class="align-middle text-center">
-                  {{$item->nilai_x}}
-                </td>
-                <td class="align-middle text-center">
-                  {{$item->nilai_y}}
-                </td>
-                <td class="align-middle text-center">
-                  {{$item->nilai_z}}
-                </td>
-                <td class="align-middle text-center">
-                  {{$item->nilai_w}}
-                </td>
-                <td class="align-middle text-end">
-                  <a class="btn btn-outline-info btn-sm mb-0 me-3">Lihat Laporan</i></a>
-                  <a class="btn btn-outline-info btn-sm mb-0 me-3">Edit</a>
-                  <a class="btn btn-outline-danger btn-sm mb-0 me-3">Hapus</a>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-        <div class="px-3 py-3">
-          {{ $data->links('pagination::bootstrap-5') }}
-        </div>
+      <div class="card-body pb-2">
+        <form role="form">
 
+          <div class="row">
+            <div class="col-lg-3 col-md-5 col-sm-6">
+              <label>Nama</label>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Nama" aria-label="Nama"
+                  aria-describedby="nama-addon">
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-6">
+              <label>Email</label>
+              <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Email" aria-label="Email"
+                  aria-describedby="email-addon">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-3 col-md-5 col-sm-6">
+              <label>Nilai X</label>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Nilai X" aria-label="x" aria-describedby="x-addon">
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-6">
+              <label>Nilai Y</label>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Nilai Y" aria-label="y" aria-describedby="y-addon">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-3 col-md-5 col-sm-6">
+              <label>Nilai Z</label>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Nilai Z" aria-label="z" aria-describedby="z-addon">
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-6">
+              <label>Nilai W</label>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Nilai W" aria-label="w" aria-describedby="w-addon">
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <div class="row">
+              <div class="col-lg-3 col-md-5 col-sm-6">
+                <button type="button" type="submit" class="btn btn-sm bg-gradient-info w-100 mt-4 mb-0">Simpan</button>
+              </div>
+              <div class="col-lg-3 col-md-5 col-sm-6">
+                <a href="{{route('laporan.index')}}" class="btn btn-sm bg-gradient-danger w-100 mt-4 mb-0">Batal</a>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

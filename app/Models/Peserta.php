@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 class Peserta extends Model
 {
     use HasFactory;
@@ -29,6 +31,18 @@ class Peserta extends Model
      * @var array
      */
     protected $fillable = ['nama', 'email'];
+
+    // append data accessor
+
+    protected $appends = ['photo_url'];
+    // function accessor 
+
+    protected function photoUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => asset('storage/' . $this->photo)
+        );
+    }
 
     public function nilai()
     {

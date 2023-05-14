@@ -108,6 +108,19 @@
         </div>
       </div>
       <div class="card-body px-0 pb-2">
+
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success mx-3 py-3" role="alert">
+          {{ $message }}
+        </div>
+        @endif
+
+        @if ($message = Session::get('error'))
+        <div class="alert alert-danger mx-3 py-3" role="alert">
+          {{ $message }}
+        </div>
+        @endif
+
         <div class="table-responsive">
           <table class="table align-items-center mb-0">
             <thead>
@@ -139,7 +152,7 @@
                 <td class="align-middle">
                   <div class="d-flex px-2 py-1">
                     <div>
-                      <img src="{{$item->peserta->photo}}" class="avatar avatar-sm me-3" alt="user2">
+                      <img src="{{$item->peserta->photo_url}}" class="avatar avatar-sm me-3" alt="user2">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="mb-0 text-sm">{{$item->peserta->nama}}</h6>

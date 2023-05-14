@@ -15,7 +15,6 @@ class LaporanPenilaianController extends Controller
     public function index()
     {
         $data_nilai = Nilai_Peserta::with('peserta')->paginate(10);
-        // return $data_nilai;
         return view('pages.dashboard', ['data' => $data_nilai]);
     }
 

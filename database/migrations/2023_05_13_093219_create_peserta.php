@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('peserta', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 255);
+            $table->string('photo', 255);
             $table->string('email', 255)->unique();
             $table->timestamps();
         });

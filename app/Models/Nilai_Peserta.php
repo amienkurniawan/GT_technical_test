@@ -29,4 +29,9 @@ class Nilai_Peserta extends Model
      * @var array
      */
     protected $fillable = ['nilai_x', 'nilai_y', 'nilai_z', 'nilai_w', 'id_peserta'];
+
+    public function peserta()
+    {
+        return $this->hasOne(Peserta::class, 'id', 'id_peserta');
+    }
 }

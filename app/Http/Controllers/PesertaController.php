@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Nilai_Peserta;
 use Illuminate\Http\Request;
 
-class LaporanPenilaianController extends Controller
+class PesertaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class LaporanPenilaianController extends Controller
      */
     public function index()
     {
-        $data_nilai = Nilai_Peserta::with('peserta')->paginate(10);
-        // return $data_nilai;
-        return view('pages.dashboard', ['data' => $data_nilai]);
+        //
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LaporanPenilaianController;
+use App\Http\Controllers\PesertaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,17 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.dashboard');
-});
-
-
+Route::redirect('/', '/laporan');
+Auth::routes();
 Route::resource('laporan', LaporanPenilaianController::class);
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
+Route::resource('peserta', PesertaController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::fallback(function () {
+    return redirect()->route('laporan.index');
+});

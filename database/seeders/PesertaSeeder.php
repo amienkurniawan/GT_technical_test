@@ -18,10 +18,12 @@ class PesertaSeeder extends Seeder
      */
     public function run()
     {
+
         for ($i = 0; $i < 100; $i++) {
 
             $peserta = new Peserta;
             $peserta->nama = Str::random(10);
+            $peserta->photo = fake()->imageUrl($width = 400, $height = 400);
             $peserta->email = Str::random(10) . '@gmail.com';
             $peserta->save();
 

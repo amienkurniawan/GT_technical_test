@@ -134,31 +134,32 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($data as $item)
               <tr>
                 <td class="align-middle">
                   <div class="d-flex px-2 py-1">
                     <div>
-                      <img src="{{asset('/assets/img/team-3.jpg')}}" class="avatar avatar-sm me-3" alt="user2">
+                      <img src="{{$item->peserta->photo}}" class="avatar avatar-sm me-3" alt="user2">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                      <h6 class="mb-0 text-sm">{{$item->peserta->nama}}</h6>
                     </div>
                   </div>
                 </td>
                 <td class="align-middle">
-                  amienkurniawan@gmail.com
+                  {{$item->peserta->email}}
                 </td>
                 <td class="align-middle text-center">
-                  14
+                  {{$item->nilai_x}}
                 </td>
                 <td class="align-middle text-center">
-                  25
+                  {{$item->nilai_y}}
                 </td>
                 <td class="align-middle text-center">
-                  20
+                  {{$item->nilai_z}}
                 </td>
                 <td class="align-middle text-center">
-                  22
+                  {{$item->nilai_w}}
                 </td>
                 <td class="align-middle text-end">
                   <a class="btn btn-outline-info btn-sm mb-0 me-3">Lihat Laporan</i></a>
@@ -166,104 +167,12 @@
                   <a class="btn btn-outline-danger btn-sm mb-0 me-3">Hapus</a>
                 </td>
               </tr>
-              <tr>
-                <td class="align-middle">
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="{{asset('/assets/img/team-3.jpg')}}" class="avatar avatar-sm me-3" alt="user2">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                    </div>
-                  </div>
-                </td>
-                <td class="align-middle">
-                  amienkurniawan@gmail.com
-                </td>
-                <td class="align-middle text-center">
-                  14
-                </td>
-                <td class="align-middle text-center">
-                  25
-                </td>
-                <td class="align-middle text-center">
-                  20
-                </td>
-                <td class="align-middle text-center">
-                  22
-                </td>
-                <td class="align-middle text-end">
-                  <a class="btn btn-outline-info btn-sm mb-0 me-3">Lihat Laporan</i></a>
-                  <a class="btn btn-outline-info btn-sm mb-0 me-3">Edit</a>
-                  <a class="btn btn-outline-danger btn-sm mb-0 me-3">Hapus</a>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="{{asset('/assets/img/team-3.jpg')}}" class="avatar avatar-sm me-3" alt="user2">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                    </div>
-                  </div>
-                </td>
-                <td class="align-middle">
-                  amienkurniawan@gmail.com
-                </td>
-                <td class="align-middle text-center">
-                  14
-                </td>
-                <td class="align-middle text-center">
-                  25
-                </td>
-                <td class="align-middle text-center">
-                  20
-                </td>
-                <td class="align-middle text-center">
-                  22
-                </td>
-                <td class="align-middle text-end">
-                  <a class="btn btn-outline-info btn-sm mb-0 me-3">Lihat Laporan</i></a>
-                  <a class="btn btn-outline-info btn-sm mb-0 me-3">Edit</a>
-                  <a class="btn btn-outline-danger btn-sm mb-0 me-3">Hapus</a>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="{{asset('/assets/img/team-3.jpg')}}" class="avatar avatar-sm me-3" alt="user2">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                    </div>
-                  </div>
-                </td>
-                <td class="align-middle">
-                  amienkurniawan@gmail.com
-                </td>
-                <td class="align-middle text-center">
-                  14
-                </td>
-                <td class="align-middle text-center">
-                  25
-                </td>
-                <td class="align-middle text-center">
-                  20
-                </td>
-                <td class="align-middle text-center">
-                  22
-                </td>
-                <td class="align-middle text-end">
-                  <a class="btn btn-outline-info btn-sm mb-0 me-3">Lihat Laporan</i></a>
-                  <a class="btn btn-outline-info btn-sm mb-0 me-3">Edit</a>
-                  <a class="btn btn-outline-danger btn-sm mb-0 me-3">Hapus</a>
-                </td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
+        </div>
+        <div class="px-3 py-3">
+          {{ $data->links('pagination::bootstrap-5') }}
         </div>
 
       </div>

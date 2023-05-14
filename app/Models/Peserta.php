@@ -29,4 +29,9 @@ class Peserta extends Model
      * @var array
      */
     protected $fillable = ['nama', 'email'];
+
+    public function nilai()
+    {
+        return $this->belongsTo(Nilai_Peserta::class, 'id_peserta', 'id');
+    }
 }

@@ -7,7 +7,11 @@ use App\Models\Peserta;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class PesertaSeeder extends Seeder
 {
@@ -23,7 +27,8 @@ class PesertaSeeder extends Seeder
 
             $peserta = new Peserta;
             $peserta->nama = fake()->name();
-            $peserta->photo = fake()->imageUrl($width = 400, $height = 400);
+            $peserta->photo = $this->generateDummyImage();
+            Log::debug($this->generateDummyImage());
             $peserta->email = fake()->email();
             $peserta->save();
 
@@ -35,5 +40,27 @@ class PesertaSeeder extends Seeder
             $nilai_peserta->nilai_w = mt_rand(1, 13);
             $nilai_peserta->save();
         }
+    }
+
+
+
+    private function generateDummyImage()
+    {
+        $faker = Faker::create();
+
+        $image = Image::canvas(400, 400);
+        $image->text($faker->word(), 200, 200, function ($font) {
+            $font->size(40);
+            $font->color('#ffffff');
+            $font->align('center');
+            $font->valign('center');
+        });
+
+        $filename = 'dummy-image-' . uniqid() . '.jpg';
+        $path = 'photos/' . $filename;
+
+        Storage::disk('local')->put($path, $image->encode());
+
+        return $path;
     }
 }

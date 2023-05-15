@@ -62,7 +62,7 @@ class LaporanPenilaianController extends Controller
             $nilai_intelegensi_normalisasi = ($nilai_intelegensi - 1) / (5 - 1);
 
             // Perhitungan Aspek Numerical Ability
-            $nilai_numerical_ability = ((0.3 * $laporan_penilaian->nilai->nilai_z) + (0.7 * $laporan_penilaian->nilai->nilai_w)) / 2;
+            $nilai_numerical_ability = ((0.3 * $laporan_penilaian->nilai->nilai_z) + (0.7 * ($laporan_penilaian->nilai->nilai_w))) / 2;
             // Nilai_numerical_ability_normalisasi = (nilai_numerical_ability - Nilai_numerical_ability_min) / (Nilai_numerical_ability_max - Nilai_numerical_ability_min)
             $nilai_numerical_ability_normalisasi = ($nilai_numerical_ability - 1) / (5 - 1);
 

@@ -6,6 +6,7 @@ use App\Models\Nilai_Peserta;
 use App\Models\Peserta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class PesertaController extends Controller
@@ -66,7 +67,7 @@ class PesertaController extends Controller
             // Proses upload dan simpan photo
             if ($request->hasFile('photo')) {
                 $photo = $request->file('photo');
-                $photoPath = $photo->store('photos', 'public'); // Simpan photo ke dalam direktori 'public/photos'
+                $photoPath = Storage::put('public/photos', $photo);
                 $peserta->photo = $photoPath;
             }
             $peserta->save();
@@ -124,7 +125,60 @@ class PesertaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            //code...
+            $validator = Validator::make($request->all(), [
+                'nama' => 'required',
+                'email' => 'required|unique:peserta|max:255',
+                'nilai_x' => 'required|numeric|between:1,33',
+                'nilai_y' => 'required|numeric|between:1,23',
+                'nilai_z' => 'required|numeric|between:1,18',
+                'nilai_w' => 'required|numeric|between:1,13',
+                'photo' => 'image|mimes:jpeg,png,jpg|max:2048', // Validasi file photo
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            // Ambil data pengguna berdasarkan ID
+            $peserta = Peserta::find($id);
+            if (!$peserta) {
+                // Handle jika pengguna tidak ditemukan
+                return redirect()->route('laporan.index')->with('error', 'Data peserta tidak ditemukan');
+            }
+
+            // update database
+            // update data peserta
+            $peserta->nama = $request->input('nama');
+            $peserta->email = $request->input('email');
+            // Proses upload dan simpan photo
+            if ($request->hasFile('photo')) {
+                $photo = $request->file('photo');
+                $photoPath = Storage::put('public/photos', $photo);
+                $peserta->photo = $photoPath;
+            }
+            $peserta->save();
+
+            // Update nilai peserta
+            Nilai_Peserta::where('id_peserta', $peserta->id)
+                ->update([
+                    'nilai_x' => $request->input('nilai_x'),
+                    'nilai_y' => $request->input('nilai_y'),
+                    'nilai_y' => $request->input('nilai_y'),
+                    'nilai_z' => $request->input('nilai_z'),
+                    'nilai_w' => $request->input('nilai_w'),
+                    'id_peserta' => $peserta->id
+                ]);
+
+            return redirect()->route('laporan.index')->with('success', 'Berhasil mengubah data peserta');
+        } catch (\Throwable $th) {
+            //throw $th;
+            Log::error($th->getMessage());
+            return redirect()->route('laporan.index')->with(['error' => 'Gagal mengubah data peserta']);;
+        }
     }
 
     /**

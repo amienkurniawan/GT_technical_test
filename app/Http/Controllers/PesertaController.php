@@ -27,7 +27,9 @@ class PesertaController extends Controller
      */
     public function create()
     {
-        return view('pages.form-create-peserta');
+        return view('pages.form-create-peserta', [
+            'edit' => false
+        ]);
     }
 
     /**
@@ -105,7 +107,12 @@ class PesertaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data_peserta = Peserta::with('nilai')->where('id', $id)->first();
+        // return $data_peserta;
+        return view('pages.form-create-peserta', [
+            'data' => $data_peserta,
+            'edit' => true
+        ]);
     }
 
     /**

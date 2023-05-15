@@ -177,16 +177,16 @@
         </nav>
         <div class="container-fluid py-4">
 
-            @include('layouts.card')
+            {{-- @include('layouts.card') --}}
 
             @if ($message = Session::get('success'))
-            <div class="alert alert-success mx-3 py-3" role="alert">
+            <div class="alert alert-success" role="alert">
                 {{ $message }}
             </div>
             @endif
 
             @if ($message = Session::get('error'))
-            <div class="alert alert-danger mx-3 py-3" role="alert">
+            <div class="alert alert-danger" role="alert">
                 {{ $message }}
             </div>
             @endif

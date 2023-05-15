@@ -48,7 +48,7 @@
       <div class="card-header pb-0">
         <div class="row">
           <div class="col-lg-6 col-7">
-            <h6>Data Laporan Nilai </h6>
+            <h6>Data Laporan Nilai {{$data['nama']}}</h6>
           </div>
         </div>
       </div>
@@ -81,19 +81,19 @@
                   </div>
                 </td>
                 <td class="align-middle ">
-                  {{$item['nilai'] == '1' ?'V':''}}
+                  {{$item['nilai'] == '1' ?'V':'-'}}
                 </td>
                 <td class="align-middle ">
-                  {{$item['nilai'] == '2' ?'V':''}}
+                  {{$item['nilai'] == '2' ?'V':'-'}}
                 </td>
                 <td class="align-middle ">
-                  {{$item['nilai'] == '3' ?'V':''}}
+                  {{$item['nilai'] == '3' ?'V':'-'}}
                 </td>
                 <td class="align-middle ">
-                  {{$item['nilai'] == '4' ?'V':''}}
+                  {{$item['nilai'] == '4' ?'V':'-'}}
                 </td>
                 <td class="align-middle ">
-                  {{$item['nilai'] == '5' ?'V':''}}
+                  {{$item['nilai'] == '5' ?'V':'-'}}
                 </td>
               </tr>
               @endforeach

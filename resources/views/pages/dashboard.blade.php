@@ -71,11 +71,27 @@
                 <td class="align-middle text-center">
                   {{$item->nilai_w}}
                 </td>
-                <td class="align-middle text-end">
-                  <a href="{{route('laporan.show',['laporan'=>$item->id])}}"
-                    class="btn btn-outline-info btn-sm mb-0 me-3">Lihat Laporan</i></a>
-                  <a class="btn btn-outline-info btn-sm mb-0 me-3">Edit</a>
-                  <a class="btn btn-outline-danger btn-sm mb-0 me-3">Hapus</a>
+                <td class="align-middle">
+                  <div class="row ">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <a href="{{route('laporan.show',['laporan'=>$item->id])}}"
+                        class="btn btn-outline-info btn-sm mb-0 me-3">Lihat Laporan</i></a>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <a href="{{route('peserta.edit',['pesertum'=>$item->id_peserta])}}"
+                        class="btn btn-outline-info btn-sm mb-0 me-3">Edit</a>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <form action="{{ route('laporan.destroy',['laporan'=>$item->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button onclick="return confirm('Are you sure you want to delete this user?')"
+                          class="btn btn-outline-danger btn-sm mb-0 me-3">Hapus</button>
+                      </form>
+                    </div>
+                  </div>
                 </td>
               </tr>
               @endforeach

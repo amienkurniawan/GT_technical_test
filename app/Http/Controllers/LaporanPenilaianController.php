@@ -6,6 +6,7 @@ use App\Models\Nilai_Peserta;
 use App\Models\Peserta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class LaporanPenilaianController extends Controller
 {
@@ -17,7 +18,9 @@ class LaporanPenilaianController extends Controller
     public function index()
     {
         $data_nilai = Nilai_Peserta::with('peserta')->paginate(10);
-        return view('pages.dashboard', ['data' => $data_nilai]);
+        return view('pages.dashboard', [
+            'data' => $data_nilai,
+        ]);
     }
 
     /**
@@ -76,7 +79,6 @@ class LaporanPenilaianController extends Controller
             ]);
 
             $laporan_penilaian['penilaian'] = $data_penilaian;
-            // return $laporan_penilaian;
             return view('pages.laporan', ['data' => $laporan_penilaian]);
         } catch (\Throwable $th) {
             Log::error([$th->getMessage()]);
@@ -115,6 +117,33 @@ class LaporanPenilaianController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            //code...
+
+            // Ambil data peserta berdasarkan ID
+            $peserta = Peserta::find($id);
+            if (!$peserta) {
+                // Handle jika peserta tidak ditemukan
+                return redirect()->back()->with('error', 'Data peserta tidak ditemukan.');
+            }
+
+            // Hapus foto jika ada
+            if ($peserta->photo) {
+                Storage::delete('photos/' . $peserta->photo);
+            }
+
+            // Hapus data peserta
+            $peserta->delete();
+
+            // Hapus data nilai
+            $nilai_peserta = Nilai_Peserta::where('id_peserta', $peserta->id)->first();
+            $nilai_peserta->delete();
+
+            return redirect()->back()->with('success', 'Berhasil menghapus data peserta.');
+        } catch (\Throwable $th) {
+
+            Log::error([$th->getMessage()]);
+            return redirect()->route('laporan.index');
+        }
     }
 }

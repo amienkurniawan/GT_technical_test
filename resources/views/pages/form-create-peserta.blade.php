@@ -107,135 +107,151 @@
         </div>
       </div>
       <div class="card-body pb-2">
-        <form role="form" method="POST" action="{{route('peserta.store')}}" enctype="multipart/form-data">
-          @csrf
-          <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <label>Nama</label>
-              <div class="mb-3">
-                <input type="text" name="nama" value="{{ old('nama',isset($data->nama) ? $data->nama :'') }}"
-                  class="form-control @error('nama') is-invalid @enderror" placeholder="Nama" aria-label="Nama"
-                  aria-describedby="nama-addon">
+        @if ($edit =='true')
+        <form role="form" method="POST" action="{{route('peserta.update',['pesertum'=>$data->id])}}"
+          enctype="multipart/form-data">
+          @method('PUT')
+          @else
+          <form role="form" method="POST" action="{{route('peserta.store')}}" enctype="multipart/form-data">
 
-                @error('nama')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+            @endif
 
+            @csrf
+            <div class="row">
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <label>Nama</label>
+                <div class="mb-3">
+                  <input type="text" name="nama" value="{{ old('nama',isset($data->nama) ? $data->nama :'') }}"
+                    class="form-control @error('nama') is-invalid @enderror" placeholder="Nama" aria-label="Nama"
+                    aria-describedby="nama-addon">
+
+                  @error('nama')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <label>Email</label>
+                <div class="mb-3">
+                  <input type="email" name="email" value="{{ old('email',isset($data->email) ? $data->email:'' ) }}"
+                    class="form-control @error('email') is-invalid @enderror" placeholder="Email" aria-label="Email"
+                    aria-describedby="email-addon">
+
+                  @error('email')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <label>Photo</label>
+                <div class="mb-3">
+                  <input type="file" name="photo" class="form-control @error('email') is-invalid @enderror"
+                    placeholder="photo" aria-label="Photo" aria-describedby="photo-addon">
+
+                  @error('email')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+
+                </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <label>Email</label>
-              <div class="mb-3">
-                <input type="email" name="email" value="{{ old('email',isset($data->email) ? $data->email:'' ) }}"
-                  class="form-control @error('email') is-invalid @enderror" placeholder="Email" aria-label="Email"
-                  aria-describedby="email-addon">
 
-                @error('email')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <label>Photo</label>
-              <div class="mb-3">
-                <input type="file" name="photo" class="form-control @error('email') is-invalid @enderror"
-                  placeholder="photo" aria-label="Photo" aria-describedby="photo-addon">
-
-                @error('email')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-3 col-md-5 col-sm-6">
-              <label>Nilai X</label>
-              <div class="mb-3">
-                <input type="text" name="nilai_x" value="{{ old('nilai_x',isset($data->nilai_x) ? $data->nilai_x:'') }}"
-                  class="form-control @error('nilai_x') is-invalid @enderror" placeholder="Nilai X" aria-label="x"
-                  aria-describedby="x-addon">
-
-                @error('nilai_x')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-5 col-sm-6">
-              <label>Nilai Y</label>
-              <div class="mb-3">
-                <input type="text" name="nilai_y" value="{{ old('nilai_y',isset($data->nilai_y)?$data->nilai_y:'') }}"
-                  class="form-control @error('nilai_y') is-invalid @enderror" placeholder="Nilai Y" aria-label="y"
-                  aria-describedby="y-addon">
-
-                @error('nilai_y')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-
-
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-3 col-md-5 col-sm-6">
-              <label>Nilai Z</label>
-              <div class="mb-3">
-                <input type="text" name="nilai_z" value="{{ old('nilai_z',isset($data->nilai_z)?$data->nilai_z:'') }}"
-                  class="form-control  @error('nilai_z') is-invalid @enderror" placeholder="Nilai Z" aria-label="z"
-                  aria-describedby="z-addon">
-
-                @error('nilai_z')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-
-
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-5 col-sm-6">
-              <label>Nilai W</label>
-              <div class="mb-3">
-                <input type="text" name="nilai_w" value="{{ old('nilai_w',isset($data->nilai_w)?$data->nilai_w:'') }}"
-                  class="form-control  @error('nilai_w') is-invalid @enderror" placeholder="Nilai W" aria-label="w"
-                  aria-describedby="w-addon">
-
-                @error('nilai_w')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-
-              </div>
-            </div>
-          </div>
-
-          <div class="text-center">
             <div class="row">
               <div class="col-lg-3 col-md-5 col-sm-6">
-                <button type="submit" class="btn btn-sm bg-gradient-info w-100 mt-4 mb-0">Simpan</button>
+                <label>Nilai X</label>
+                <div class="mb-3">
+                  <input type="text" name="nilai_x"
+                    value="{{ old('nilai_x',isset($data->nilai->nilai_x) ? $data->nilai->nilai_x:'') }}"
+                    class="form-control @error('nilai_x') is-invalid @enderror" placeholder="Nilai X" aria-label="x"
+                    aria-describedby="x-addon">
+
+                  @error('nilai_x')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+
+                </div>
               </div>
               <div class="col-lg-3 col-md-5 col-sm-6">
-                <a href="{{route('laporan.index')}}" class="btn btn-sm bg-gradient-danger w-100 mt-4 mb-0">Batal</a>
+                <label>Nilai Y</label>
+                <div class="mb-3">
+                  <input type="text" name="nilai_y"
+                    value="{{ old('nilai_y',isset($data->nilai->nilai_y)?$data->nilai->nilai_y:'') }}"
+                    class="form-control @error('nilai_y') is-invalid @enderror" placeholder="Nilai Y" aria-label="y"
+                    aria-describedby="y-addon">
+
+                  @error('nilai_y')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+
+
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+
+            <div class="row">
+              <div class="col-lg-3 col-md-5 col-sm-6">
+                <label>Nilai Z</label>
+                <div class="mb-3">
+                  <input type="text" name="nilai_z"
+                    value="{{ old('nilai_z',isset($data->nilai->nilai_z)?$data->nilai->nilai_z:'') }}"
+                    class="form-control  @error('nilai_z') is-invalid @enderror" placeholder="Nilai Z" aria-label="z"
+                    aria-describedby="z-addon">
+
+                  @error('nilai_z')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+
+
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-5 col-sm-6">
+                <label>Nilai W</label>
+                <div class="mb-3">
+                  <input type="text" name="nilai_w"
+                    value="{{ old('nilai_w',isset($data->nilai->nilai_w)?$data->nilai->nilai_w:'') }}"
+                    class="form-control  @error('nilai_w') is-invalid @enderror" placeholder="Nilai W" aria-label="w"
+                    aria-describedby="w-addon">
+
+                  @error('nilai_w')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <div class="row">
+                <div class="col-lg-3 col-md-5 col-sm-6">
+                  @if ($edit =='true')
+                  <button type="submit" class="btn btn-sm bg-gradient-info w-100 mt-4 mb-0">Ubah</button>
+                  @else
+                  <button type="submit" class="btn btn-sm bg-gradient-info w-100 mt-4 mb-0">Simpan</button>
+                  @endif
+                </div>
+                <div class="col-lg-3 col-md-5 col-sm-6">
+                  <a href="{{route('laporan.index')}}" class="btn btn-sm bg-gradient-danger w-100 mt-4 mb-0">Batal</a>
+                </div>
+              </div>
+            </div>
+          </form>
       </div>
     </div>
   </div>

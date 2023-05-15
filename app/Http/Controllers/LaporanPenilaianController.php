@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nilai_Peserta;
+use App\Models\Peserta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LaporanPenilaianController extends Controller
 {
@@ -47,7 +49,39 @@ class LaporanPenilaianController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $laporan_penilaian = Peserta::where('id', $id)->with('nilai')->first();
+
+            // perhitungan Aspek Intelegensi 
+            $nilai_intelegensi = ((0.4 * $laporan_penilaian->nilai->nilai_x) + (0.6 * $laporan_penilaian->nilai->nilai_y)) / 2;
+            // lakukan normalisasi nilai 
+            // Nilai_intelegensi_normalisasi = (nilai_intelegensi - Nilai_intelegensi_min) / (Nilai_intelegensi_max - Nilai_intelegensi_min)
+            $nilai_intelegensi_normalisasi = ($nilai_intelegensi - 1) / (5 - 1);
+
+            // Perhitungan Aspek Numerical Ability
+            $nilai_numerical_ability = ((0.3 * $laporan_penilaian->nilai->nilai_z) + (0.7 * $laporan_penilaian->nilai->nilai_w)) / 2;
+            // Nilai_numerical_ability_normalisasi = (nilai_numerical_ability - Nilai_numerical_ability_min) / (Nilai_numerical_ability_max - Nilai_numerical_ability_min)
+            $nilai_numerical_ability_normalisasi = ($nilai_numerical_ability - 1) / (5 - 1);
+
+            $data_penilaian = [];
+
+            array_push($data_penilaian, [
+                'aspek' => 'Aspek Intelegensi',
+                'nilai' => round($nilai_intelegensi_normalisasi)
+            ]);
+
+            array_push($data_penilaian, [
+                'aspek' => 'Aspek Numerical Ability',
+                'nilai' => round($nilai_numerical_ability_normalisasi)
+            ]);
+
+            $laporan_penilaian['penilaian'] = $data_penilaian;
+            // return $laporan_penilaian;
+            return view('pages.laporan', ['data' => $laporan_penilaian]);
+        } catch (\Throwable $th) {
+            Log::error([$th->getMessage()]);
+            return redirect()->route('laporan.index');
+        }
     }
 
     /**

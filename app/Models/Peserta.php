@@ -46,6 +46,6 @@ class Peserta extends Model
 
     public function nilai()
     {
-        return $this->belongsTo(Nilai_Peserta::class, 'id_peserta', 'id');
+        return $this->belongsTo(Nilai_Peserta::class, 'id', 'id_peserta');
     }
 }

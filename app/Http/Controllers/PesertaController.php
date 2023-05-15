@@ -81,8 +81,7 @@ class PesertaController extends Controller
             return redirect()->route('laporan.index')->with(['success' => 'Berhasil membuat data peserta baru']);;
         } catch (\Throwable $th) {
             //throw $th;
-            Log::debug($th->getMessage());
-
+            Log::error($th->getMessage());
             return redirect()->route('laporan.index')->with(['error' => 'Gagal membuat data peserta baru']);;
         }
     }

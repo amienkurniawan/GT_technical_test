@@ -22,9 +22,9 @@ class PesertaSeeder extends Seeder
         for ($i = 0; $i < 100; $i++) {
 
             $peserta = new Peserta;
-            $peserta->nama = Str::random(10);
+            $peserta->nama = fake()->name();
             $peserta->photo = fake()->imageUrl($width = 400, $height = 400);
-            $peserta->email = Str::random(10) . '@gmail.com';
+            $peserta->email = fake()->email();
             $peserta->save();
 
             $nilai_peserta = new Nilai_Peserta;

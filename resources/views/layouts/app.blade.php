@@ -176,6 +176,21 @@
             </div>
         </nav>
         <div class="container-fluid py-4">
+
+            @include('layouts.card')
+
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success mx-3 py-3" role="alert">
+                {{ $message }}
+            </div>
+            @endif
+
+            @if ($message = Session::get('error'))
+            <div class="alert alert-danger mx-3 py-3" role="alert">
+                {{ $message }}
+            </div>
+            @endif
+
             @yield('content')
             <footer class="footer pt-3  ">
                 <div class="container-fluid">

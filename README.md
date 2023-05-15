@@ -14,7 +14,7 @@ Pada project ini saya menggunakan laravel versi 9 dengan User interface dari sof
 ### pertibangan 
 Laravel merupakan framework php yang memiliki komunitas yang besar sehingga akan mempermudah jika ditemukan kendala ketika membuat sebuah project.
 
-Soft UI merupakan free tempalte dashboard berbasis Bootstrap 5 dan cukup mudah untuk digunakan.
+Soft UI merupakan free template dashboard berbasis Bootstrap 5 dan cukup mudah untuk digunakan.
 
 ## cara penggunaan project
 

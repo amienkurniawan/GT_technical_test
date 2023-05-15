@@ -152,7 +152,7 @@
               <div class="col-lg-3 col-md-4 col-sm-6">
                 <label>Photo</label>
                 <div class="mb-3">
-                  <input type="file" name="photo" class="form-control @error('email') is-invalid @enderror"
+                  <input type="file" name="photo" class="form-control @error('photo') is-invalid @enderror"
                     placeholder="photo" aria-label="Photo" aria-describedby="photo-addon">
 
                   @error('email')

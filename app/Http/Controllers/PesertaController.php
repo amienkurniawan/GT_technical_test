@@ -67,7 +67,8 @@ class PesertaController extends Controller
             // Proses upload dan simpan photo
             if ($request->hasFile('photo')) {
                 $photo = $request->file('photo');
-                $photoPath = Storage::put('public/photos', $photo);
+                $photoPath = Storage::disk('public')->put('photos', $photo);
+                Log::debug([$photoPath]);
                 $peserta->photo = $photoPath;
             }
             $peserta->save();
@@ -126,10 +127,17 @@ class PesertaController extends Controller
     public function update(Request $request, $id)
     {
         try {
+            // Ambil data pengguna berdasarkan ID
+            $peserta = Peserta::find($id);
+            if (!$peserta) {
+                // Handle jika pengguna tidak ditemukan
+                return redirect()->route('laporan.index')->with('error', 'Data peserta tidak ditemukan');
+            }
+
             //code...
             $validator = Validator::make($request->all(), [
                 'nama' => 'required',
-                'email' => 'required|unique:peserta|max:255',
+                'email' => 'required|max:255|unique:peserta,email,' . $peserta->id,
                 'nilai_x' => 'required|numeric|between:1,33',
                 'nilai_y' => 'required|numeric|between:1,23',
                 'nilai_z' => 'required|numeric|between:1,18',
@@ -143,13 +151,6 @@ class PesertaController extends Controller
                     ->withInput();
             }
 
-            // Ambil data pengguna berdasarkan ID
-            $peserta = Peserta::find($id);
-            if (!$peserta) {
-                // Handle jika pengguna tidak ditemukan
-                return redirect()->route('laporan.index')->with('error', 'Data peserta tidak ditemukan');
-            }
-
             // update database
             // update data peserta
             $peserta->nama = $request->input('nama');
@@ -157,7 +158,8 @@ class PesertaController extends Controller
             // Proses upload dan simpan photo
             if ($request->hasFile('photo')) {
                 $photo = $request->file('photo');
-                $photoPath = Storage::put('public/photos', $photo);
+                $photoPath = Storage::disk('public')->put('photos', $photo);
+                Log::debug([$photoPath]);
                 $peserta->photo = $photoPath;
             }
             $peserta->save();

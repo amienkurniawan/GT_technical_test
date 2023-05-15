@@ -28,7 +28,6 @@ class PesertaSeeder extends Seeder
             $peserta = new Peserta;
             $peserta->nama = fake()->name();
             $peserta->photo = $this->generateDummyImage();
-            Log::debug($this->generateDummyImage());
             $peserta->email = fake()->email();
             $peserta->save();
 
@@ -41,8 +40,6 @@ class PesertaSeeder extends Seeder
             $nilai_peserta->save();
         }
     }
-
-
 
     private function generateDummyImage()
     {
@@ -58,9 +55,10 @@ class PesertaSeeder extends Seeder
 
         $filename = 'dummy-image-' . uniqid() . '.jpg';
         $path = 'photos/' . $filename;
+        $accessPath = 'photos/' . $filename;
 
-        Storage::disk('local')->put($path, $image->encode());
+        Storage::disk('public')->put($path, $image->encode());
 
-        return $path;
+        return $accessPath;
     }
 }

@@ -17,10 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/laporan');
 Auth::routes();
-Route::resource('laporan', LaporanPenilaianController::class);
-Route::resource('peserta', PesertaController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->group(function () {
+    Route::resource('laporan', LaporanPenilaianController::class, ['only' => ['index', 'show', 'destroy']]);
+    Route::resource('peserta', PesertaController::class, ['only' => ['create', 'store', 'edit', 'update']]);
+});
+
+Route::redirect('/home',  '/laporan')->name('home');
 
 Route::fallback(function () {
     return redirect()->route('laporan.index');

@@ -44,7 +44,7 @@ class PesertaSeeder extends Seeder
         $image = Image::canvas(400, 400);
         $image->text($faker->word(), 200, 200, function ($font) {
             $font->size(40);
-            $font->color('#000000');
+            $font->color('#123456');
             $font->align('center');
             $font->valign('center');
         });

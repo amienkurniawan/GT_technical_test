@@ -26,10 +26,10 @@ kemudian ketikan perintah php artisan storage:link yang digunakan untuk membuat 
 kemudian login user dapat melakukan register terlebih dahulu untuk masuk ke halaman dashboard
 
 ## Credit Project 
-Laravel [link] (https://laravel.com/docs/9.x)
-Soft UI [link] (https://www.creative-tim.com/product/soft-ui-dashboard)
+Laravel [link](https://laravel.com/docs/9.x)
+Soft UI [link](https://www.creative-tim.com/product/soft-ui-dashboard)
 
 ## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-The Soft UI is licensed under the MIT [link] (https://www.creative-tim.com/license)
+The Soft UI is licensed under the MIT [link](https://www.creative-tim.com/license)

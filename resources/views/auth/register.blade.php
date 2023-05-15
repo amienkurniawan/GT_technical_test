@@ -67,7 +67,7 @@
                                     @csrf
 
                                     <div class="mb-3">
-                                        <input type="text" name="name"
+                                        <input type="text" name="name" required value="{{old('name')}}"
                                             class="form-control @error('name') is-invalid @enderror" placeholder="Name"
                                             aria-label="Name" aria-describedby="email-addon">
 
@@ -79,7 +79,7 @@
 
                                     </div>
                                     <div class="mb-3">
-                                        <input type="email" name="email"
+                                        <input type="email" name="email" value="{{old('email')}}" required
                                             class="form-control  @error('email') is-invalid @enderror"
                                             placeholder="Email" aria-label="Email" aria-describedby="email-addon">
 
@@ -91,17 +91,27 @@
 
                                     </div>
                                     <div class="mb-3">
-                                        <input type="password" name="password" required autocomplete="new-password"
+                                        <input type="password" name="password" required
                                             class="form-control @error('password') is-invalid @enderror"
-                                            placeholder="Password" aria-label="Password"
+                                            placeholder="Password" aria-label="password"
                                             aria-describedby="password-addon">
+
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+
                                     </div>
+
+
                                     <div class="mb-3">
                                         <input type="password" name="password_confirmation" required
                                             autocomplete="new-password" class="form-control"
                                             placeholder="Confirm Password" aria-label="Confirm Password"
                                             aria-describedby="confirm-password-addon">
                                     </div>
+
                                     <div class="text-center">
                                         <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign
                                             up</button>

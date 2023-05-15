@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LaporanPenilaianController;
 use App\Http\Controllers\PesertaController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::resource('laporan', LaporanPenilaianController::class, ['only' => ['index', 'show', 'destroy']]);
     Route::resource('peserta', PesertaController::class, ['only' => ['create', 'store', 'edit', 'update']]);
+    Route::get('profile',  [UserProfileController::class, 'index'])->name('profile');
+    Route::put('profile/{profile}', [UserProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::redirect('/home',  '/laporan')->name('home');

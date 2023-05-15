@@ -179,7 +179,7 @@ class PesertaController extends Controller
         } catch (\Throwable $th) {
             //throw $th;
             Log::error($th->getMessage());
-            return redirect()->route('laporan.index')->with(['error' => 'Gagal mengubah data peserta']);;
+            return redirect()->route('laporan.index')->with(['error' => 'Gagal mengubah data peserta']);
         }
     }
 

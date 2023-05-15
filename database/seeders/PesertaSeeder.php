@@ -4,11 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Nilai_Peserta;
 use App\Models\Peserta;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 use Faker\Factory as Faker;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
@@ -48,7 +44,7 @@ class PesertaSeeder extends Seeder
         $image = Image::canvas(400, 400);
         $image->text($faker->word(), 200, 200, function ($font) {
             $font->size(40);
-            $font->color('#ffffff');
+            $font->color('#000000');
             $font->align('center');
             $font->valign('center');
         });
